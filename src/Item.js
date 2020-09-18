@@ -5,7 +5,7 @@ class Item extends Component {
   render() {
     return (
       <ListGroup>
-        <ListGroupItem>{this.props.item.name}</ListGroupItem>
+        <ListGroupItem>Name: {this.props.item.name}</ListGroupItem>
       </ListGroup>
     );
   }
