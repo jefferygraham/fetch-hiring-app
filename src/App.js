@@ -43,12 +43,20 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <Navbar className='bg-dark' dark sticky='top'>
-          <NavbarBrand href='/'>Fetch Rewards</NavbarBrand>
+        <Navbar className='bg-white shadow' sticky='top'>
+          <NavbarBrand href='/'>
+            <img
+              src='/assets/images/FetchRewardsHorizontalLogo.png'
+              width='150'
+              alt='Fetch Rewards Logo'
+            />
+          </NavbarBrand>
           <Nav>
             {listIds.map((listId) => (
               <NavItem key={listId}>
-                <NavLink href={`#listId${listId}`}>List Id {listId}</NavLink>
+                <NavLink className='text-muted' href={`#listId${listId}`}>
+                  List Id {listId}
+                </NavLink>
               </NavItem>
             ))}
           </Nav>
@@ -57,7 +65,9 @@ class App extends Component {
         <Container>
           {listIds.map((listId) => (
             <div key={listId}>
-              <h2 id={`listId${listId}`}>List Id: {listId}</h2>
+              <h2 className='mt-3' id={`listId${listId}`}>
+                List Id: {listId}
+              </h2>
               {items.map(
                 (item) =>
                   listId === item.listId && <Item key={item.id} item={item} />
