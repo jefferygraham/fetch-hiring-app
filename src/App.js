@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Item from './Item';
-import { Container, Row, Col } from 'reactstrap';
+import {
+  Container,
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import './App.css';
 
 class App extends Component {
@@ -35,17 +42,30 @@ class App extends Component {
     const listIds = [...new Set(items.map((data) => data.listId))];
 
     return (
-      <Container>
-        {listIds.map((listId) => (
-          <div key={listId}>
-            <h2>List Id: {listId}</h2>
-            {items.map(
-              (item) =>
-                listId === item.listId && <Item key={item.id} item={item} />
-            )}
-          </div>
-        ))}
-      </Container>
+      <React.Fragment>
+        <Navbar className='bg-dark' dark sticky='top'>
+          <NavbarBrand href='/'>Fetch Rewards</NavbarBrand>
+          <Nav>
+            {listIds.map((listId) => (
+              <NavItem key={listId}>
+                <NavLink href={`#listId${listId}`}>List Id {listId}</NavLink>
+              </NavItem>
+            ))}
+          </Nav>
+        </Navbar>
+
+        <Container>
+          {listIds.map((listId) => (
+            <div key={listId}>
+              <h2 id={`listId${listId}`}>List Id: {listId}</h2>
+              {items.map(
+                (item) =>
+                  listId === item.listId && <Item key={item.id} item={item} />
+              )}
+            </div>
+          ))}
+        </Container>
+      </React.Fragment>
     );
   }
 }
