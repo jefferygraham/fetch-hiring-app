@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import { Container, Row, Col } from 'reactstrap';
 import './App.css';
 
 class App extends Component {
@@ -34,7 +35,7 @@ class App extends Component {
     const listIds = [...new Set(items.map((data) => data.listId))];
 
     return (
-      <div className='App'>
+      <Container>
         {listIds.map((listId) => (
           <div key={listId}>
             <h2>List Id: {listId}</h2>
@@ -44,7 +45,7 @@ class App extends Component {
             )}
           </div>
         ))}
-      </div>
+      </Container>
     );
   }
 }
